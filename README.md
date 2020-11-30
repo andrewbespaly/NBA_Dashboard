@@ -1,6 +1,6 @@
 # NBA Dashboard
 
-### Introductions
+### Introduction
 
 This is an ERN (Express JS, React JS, and Node JS) dashboard web application that displays all information regarding NBA games, players, statistics.
 
@@ -28,6 +28,21 @@ cd nba-dashboard
 npm install
 npm start
 ```
+
+### Libraries
+Below are the libraries that we used when developing this project:
+
+* [chart.js](https://www.chartjs.org/)
+* [recharts](https://recharts.org/en-US/)
+* [nba-color](https://www.npmjs.com/package/nba-color)
+
+
+### Tutorials 
+Below are the Tutorials we referenced when working on this project:
+
+* https://mdbootstrap.com/docs/react/tables/pagination/  
+* https://ledsun.github.io/react-chartjs-example/radar/
+* https://www.chartjs.org/samples/latest/
 
 
 
