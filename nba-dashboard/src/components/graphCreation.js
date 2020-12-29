@@ -55,6 +55,7 @@ const CustomTooltip = ({ active, payload, label, glossary, all_data, all_needed_
 
 function processGraph(all_data, all_team_data, team_mappings, type_of_graph, stat_to_graph){
 
+  //graph used for multiple stats on homepage
   if(type_of_graph === "doublebar"){
     let stats=stat_to_graph.split(" ");
     return(
@@ -100,6 +101,7 @@ function processGraph(all_data, all_team_data, team_mappings, type_of_graph, sta
     );
   }
 
+  //graph used for single stats on homepage
   if(type_of_graph === "bar"){
     return(
       <ResponsiveContainer width={"97%"} height={600}>
@@ -108,7 +110,7 @@ function processGraph(all_data, all_team_data, team_mappings, type_of_graph, sta
         >
           <XAxis type="category" dataKey={"fullName"} tickLine={false} hide/>
           <YAxis interval="preserveStartEnd" />
-          {/* <YAxis interval="preserveStartEnd" type="number" domain={['dataMin', 'dataMax']} /> */}
+          {/* dataMax bugs out <YAxis interval="preserveStartEnd" type="number" domain={[0, dataMax => Math.ceil(dataMax)]} /> */}  
           <CartesianGrid />
           <Tooltip content={<CustomTooltip glossary={all_team_data.glossary} all_data={all_team_data.team_stats} all_needed_stats={stat_to_graph} type={type_of_graph}/>} animationEasing="ease-in-out" />
           <Bar dataKey={stat_to_graph} 
@@ -127,6 +129,7 @@ function processGraph(all_data, all_team_data, team_mappings, type_of_graph, sta
     );
   }
 
+  //graph used for stats on standings page
   if(type_of_graph === "singlebar"){
     return(
       <ResponsiveContainer width={"80%"} height={500}>
