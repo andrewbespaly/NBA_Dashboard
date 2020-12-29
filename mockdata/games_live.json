@@ -1,0 +1,92 @@
+{
+    "api": {
+        "status": 200,
+        "message": "GET games/live",
+        "results": 0,
+        "filters": [
+            "seasonYear",
+            "league",
+            "gameId",
+            "teamId",
+            "date",
+            "live"
+        ],
+        "games": [
+          {
+            "seasonYear":"2020",
+            "league":"standard",
+            "gameId":"0011800069",
+            "seasonStageId":"1",
+            "statusNum":"2",
+            "startTimeUTC":"2020-11-12T23:00:00.000Z",
+            "endTimeUTC":"",
+            "arena":"Amway Center",
+            "city":"Orlando",
+            "country":"USA",
+            "infos":"Preseason",
+            "vTeam":{
+              "teamId":"38",
+              "score":{
+                "points":"72"
+              }
+            },
+            "hTeam":{
+              "teamId":"28",
+              "score":{
+                "points":"64"
+              }
+            }
+          },
+          {
+            "seasonYear":"2020",
+            "league":"standard",
+            "gameId":"0011800070",
+            "seasonStageId":"1",
+            "statusNum":"2",
+            "startTimeUTC":"2020-11-12T23:00:00.000Z",
+            "endTimeUTC":"",
+            "arena":"Capital One Arena",
+            "city":"Washington",
+            "country":"USA",
+            "infos":"Preseason",
+            "vTeam":{
+              "teamId":"2",
+              "score":{
+                "points":"30"
+              }
+            },
+            "hTeam":{
+              "teamId":"1",
+              "score":{
+                "points":"37"
+              }
+            }
+          },
+          {
+            "seasonYear":"2020",
+            "league":"standard",
+            "gameId":"0011800079",
+            "seasonStageId":"1",
+            "statusNum":"2",
+            "startTimeUTC":"2020-11-12T24:00:00.000Z",
+            "endTimeUTC":"",
+            "arena":"Rose Garden",
+            "city":"Oregon",
+            "country":"USA",
+            "infos":"Preseason",
+            "vTeam":{
+              "teamId":"17",
+              "score":{
+                "points":"96"
+              }
+            },
+            "hTeam":{
+              "teamId":"29",
+              "score":{
+                "points":"96"
+              }
+            }
+          }
+        ]
+    }
+}

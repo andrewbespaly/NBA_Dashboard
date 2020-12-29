@@ -54,7 +54,7 @@ export default class Player extends Component {
   }
   
   getTeamsMappings = async () => {
-      const response = await fetch('http://localhost:8000/api/teams/mappings', 
+      const response = await fetch('/api/teams/mappings', 
         {"method": "GET",
          "headers":
          {

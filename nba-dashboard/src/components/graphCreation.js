@@ -108,6 +108,7 @@ function processGraph(all_data, all_team_data, team_mappings, type_of_graph, sta
         >
           <XAxis type="category" dataKey={"fullName"} tickLine={false} hide/>
           <YAxis interval="preserveStartEnd" />
+          {/* <YAxis interval="preserveStartEnd" type="number" domain={['dataMin', 'dataMax']} /> */}
           <CartesianGrid />
           <Tooltip content={<CustomTooltip glossary={all_team_data.glossary} all_data={all_team_data.team_stats} all_needed_stats={stat_to_graph} type={type_of_graph}/>} animationEasing="ease-in-out" />
           <Bar dataKey={stat_to_graph} 

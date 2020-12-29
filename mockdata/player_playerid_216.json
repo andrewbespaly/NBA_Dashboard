@@ -1,0 +1,38 @@
+{
+    "api": {
+        "status": 200,
+        "message": "GET players/playerId/216",
+        "results": 1,
+        "filters": [
+            "playerId",
+            "teamId",
+            "league",
+            "country",
+            "lastName",
+            "firstName"
+        ],
+        "players": [
+            {
+                "firstName": "James",
+                "lastName": "Harden",
+                "teamId": "14",
+                "yearsPro": "0",
+                "collegeName": "",
+                "country": "",
+                "playerId": "216",
+                "dateOfBirth": "",
+                "affiliation": "",
+                "startNba": "0",
+                "heightInMeters": "",
+                "weightInKilograms": "",
+                "leagues": {
+                    "standard": {
+                        "jersey": "13",
+                        "active": "1",
+                        "pos": "G"
+                    }
+                }
+            }
+        ]
+    }
+}

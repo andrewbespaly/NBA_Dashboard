@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './live.css';
+import ball_logo from '../assets/basketball_logo_t.png';
 
 export default class Live extends Component {
  
@@ -32,11 +33,11 @@ export default class Live extends Component {
 
 
 getLiveGames = async () => {
-    const response = await fetch('http://localhost:8000/api/games/live', 
+    const response = await fetch('/api/games/live', 
       {"method": "GET",
        "headers":
        {
-        "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
+        "x-rapidapi-host": process.env.REACT_APP_NONFREE_API_URL,
         "x-rapidapi-key": process.env.REACT_APP_API_KEY,
         }
       });
@@ -52,7 +53,7 @@ getLiveGames = async () => {
 }
 
 getTeamsMappings = async () => {
-    const response = await fetch('http://localhost:8000/api/teams/mappings', 
+    const response = await fetch('/api/teams/mappings', 
       {"method": "GET",
        "headers":
        {
@@ -117,20 +118,26 @@ load_data = () => {
            const homeObj = this.props.all_data.team_stats.find(obj => {
              return obj.fullName === homeTeamName
            })
+           let homeLogo=ball_logo;
+           if(homeObj !== undefined){homeLogo=homeObj.logo}
+
            const awayObj = this.props.all_data.team_stats.find(obj => {
             return obj.fullName === awayTeamName
-          })
-          const scoreColors = this.calcScores(homeTeamScore, awayTeamScore)
-          
+           })
+           let awayLogo=ball_logo;
+           if(awayObj !== undefined){awayLogo=awayObj.logo}
+
+           const scoreColors = this.calcScores(homeTeamScore, awayTeamScore)
+      
             return (
             <div className="single_game" key={i}>
 
               <div className='row' >
                 <div className='col-6'>
-                  <img className='img-fluid' src={homeObj.logo} alt={(homeTeamName+' logo')} width="80px" height="auto" />
+                  <img className='img-fluid' src={homeLogo} alt={(homeTeamName+' logo')} width="80px" height="auto" />
                 </div>
                 <div className='col-6'>
-                  <img className='img-fluid' src={awayObj.logo} alt={(awayTeamName+' logo')} width="80px" height="auto" />
+                  <img className='img-fluid' src={awayLogo} alt={(awayTeamName+' logo')} width="80px" height="auto" />
                 </div>
               </div>
 
@@ -167,7 +174,7 @@ load_data = () => {
       return (
         <div>
             <h1>
-              Loading Live Games Data ...
+              Loading Live Game Data ...
             </h1>
         </div>
       )
@@ -179,17 +186,9 @@ load_data = () => {
             Live Games 
             <nobr className="reddot">🔴</nobr>
           </h1>    
-          
           <br></br>
-          
-
           {this.load_data(this.state.data)}
-          
-          
-          <p>*There are no live games in progress. This is a proof-of-concept of how it would look.</p>
-
       </div>
     );
   }
-
 }

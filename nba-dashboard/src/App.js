@@ -29,7 +29,7 @@ export default class App extends Component {
 
   componentDidMount(){
     let loadResponse = async () => {
-      await fetch("http://localhost:8000/api/team_stats")
+      await fetch("/api/team_stats")
       .then((res) => res.json())
       .then((team_data) => {
 
@@ -49,39 +49,63 @@ export default class App extends Component {
     })
       .catch((err) => console.log("Request failed", err));
 
-    // await fetch("http://localhost:8000/api/teams/league/standard")
-    await fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard",
-      {"method": "GET",
-       "headers":
-       {
-        "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
-        "x-rapidapi-key": process.env.REACT_APP_API_KEY,
-        }
-      })
-      .then((res) => res.json())
-      .then((team_names) => {
-        let temp_data = this.state.data;
-        team_names.api.teams.forEach(api_team => {
-          //check if api_team name exists in temp data, then put it there if it does
-          let found_city = temp_data.team_stats.find(e => {
-            if(e.Team === api_team.city){ return true}
-            if(e.Team === "L.A. Clippers" && api_team.city === "LA"){return true}
-            if(e.Team === "L.A. Lakers" && api_team.city === "Los Angeles"){return true}
-            return false;
-          });
-          if(found_city !== undefined){
-            // found_city['team_info'] = api_team;
-            //loop through api_team info and add each field individually into found city data
-            for(const property in api_team) {
-              found_city[property] = api_team[property];
+      await fetch('/api/team_info')
+        .then((res) => res.json())
+        .then((team_names) => {
+          let temp_data = this.state.data;
+          team_names.forEach(api_team => {
+            let found_city = temp_data.team_stats.find(e => {
+              if(e.Team === api_team.city){ return true}
+              if(e.Team === "L.A. Clippers" && api_team.city === "LA"){return true}
+              if(e.Team === "L.A. Lakers" && api_team.city === "Los Angeles"){return true}
+              return false;
+            });
+            if(found_city !== undefined){
+              for(const property in api_team) {
+                found_city[property] = api_team[property];
+              }
             }
-          }
+          })
+
+          this.setState({ isLoaded: true, data: temp_data })
         })
+        .catch((err) => console.log("Request failed", err));
 
-        this.setState({ isLoaded: true, data: temp_data })
-      })
+    // await fetch("http://localhost:8000/api/teams/league/standard")
 
-    };
+    // await fetch("https://api-nba-v1.p.rapidapi.com/teams/league/standard",
+    //   {"method": "GET",
+    //    "headers":
+    //    {
+    //     "x-rapidapi-host": "api-nba-v1.p.rapidapi.com",
+    //     "x-rapidapi-key": process.env.REACT_APP_API_KEY,
+    //     }
+    //   })
+    //   .then((res) => res.json())
+    //   .then((team_names) => {
+    //     let temp_data = this.state.data;
+    //     team_names.api.teams.forEach(api_team => {
+    //       //check if api_team name exists in temp data, then put it there if it does
+    //       let found_city = temp_data.team_stats.find(e => {
+    //         if(e.Team === api_team.city){ return true}
+    //         if(e.Team === "L.A. Clippers" && api_team.city === "LA"){return true}
+    //         if(e.Team === "L.A. Lakers" && api_team.city === "Los Angeles"){return true}
+    //         return false;
+    //       });
+    //       if(found_city !== undefined){
+    //         // found_city['team_info'] = api_team;
+    //         //loop through api_team info and add each field individually into found city data
+    //         for(const property in api_team) {
+    //           found_city[property] = api_team[property];
+    //         }
+    //       }
+    //     })
+
+    //     this.setState({ isLoaded: true, data: temp_data })
+    //   })
+
+    // };
+    }
     loadResponse();
   }
   

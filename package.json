@@ -1,0 +1,29 @@
+{
+  "name": "nba-dashboard-server",
+  "version": "1.0.0",
+  "description": "Server that handles API requests",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd nba-dashboard && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewbespaly/NBA_Dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewbespaly/NBA_Dashboard/issues"
+  },
+  "homepage": "https://github.com/andrewbespaly/NBA_Dashboard#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "path": "^0.12.7"
+  }
+}
